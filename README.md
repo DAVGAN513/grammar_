@@ -48,7 +48,7 @@ IRREGULAR ENDING:
 - `utilise / utilisent`: uses / use
 - `regarde / regardent`: looks at / look at
 
-# CONJUNTIONS
+## CONJUNTIONS
 - `et`: and
 - `ou`: or
 
