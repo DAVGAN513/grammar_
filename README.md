@@ -25,12 +25,12 @@ To get a better understand how to form the plurals in this restricted grammar he
 # Models
 
 The model used is a grammar that can create an validate the plurals created in a sentence here is the school related vocabulary that will be used: 
-# ARTICLES
+## ARTICLES
 - 'le' : the masculine singular
 - 'la' : the feminine singular
 - 'les' : the plural
 
-# NOUNS ROOTS
+## NOUNS ROOTS
 REGULAR ENDINGS:
 - 'stylo' : pen
 - 'livre' : book
@@ -38,11 +38,12 @@ REGULAR ENDINGS:
 - 'chaise' : chair
 - 'table' : table
 - 'gomme' : eraser
+
 IRREGULAR ENDING:
 - 'tableau' : board
 - 'bureau' : desk
 
-# VERBS
+## VERBS
 - 'a/ont' : has/have
 - 'utilise/utilisent' : uses/use
 - 'regarde/regardent' : looks at/look at
