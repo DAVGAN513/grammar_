@@ -54,4 +54,70 @@ IRREGULAR ENDING:
 
 # Grammar
 
+To give some context Geeks for Geeks mentions that in several phases exist in compiler design the syntax analysis checks if the input follows the grammar assigned to the compiler, the parser implemented here is an LL(1) which this operates top down without backtracking and without recursive descent making it highky efficient 
+So to achive an LL(!) parser we need to do some steps this ones are the main for the initial grammar: 
+- 1: Eliminate ambiguity we need to ensure only one unique syntax tree can be generated per valid input
+- 2: Eliminate left recursion we need to ensure the tree grows from the right to avoid infinite loops during top down parsing
+
+# Initial Grammar 
+
+```text
+S -> NPC VP NPC | NPC VP
+NPC -> NPC Conj NPC | NP
+NP -> Art Noun
+Noun -> Reg | Eau
+Reg -> RegR RegE
+Eau -> EauR EauE
+RegR -> 'stylo' | 'livre' | 'cahier' | 'chaise' | 'table' | 'gomme'
+EauR -> 'tableau' | 'bureau'
+RegE -> 's' | Empty
+EauE -> 'x' | Empty
+Art -> 'le' | 'la' | 'les'
+VP -> 'utilise' | 'utilisent' | 'a' | 'ont' | 'regarde' | 'regardent'
+Conj -> 'et' | 'ou'
+```
+The rule NPC -> NPC Conj NPC | NP is both ambiguous and left recursive. Ambiguity arises because conjunction chains can generate multiple valid parse trees, while left recursion prevents the grammar from being LL(1). By introducing the auxiliary non terminal NPC_A, the grammar is restructured to eliminate left recursion and ensure a unique parsing strategy, satisfying LL(1) constraints: 
+
+```text
+NPC -> NP NPC_A
+NPC_A -> Conj NP NPC_A | Empty
+```
+
+# Grammar that recognizes the language 
+
+Here is the final LL(1) compliant grammar:
+
+```text
+S -> NPC VP NPC | NPC VP
+NPC -> NP NPC_A
+NPC_A -> Conj NP NPC_A | Empty
+NP -> Art Noun
+Art -> 'le' | 'la' | 'les'
+Noun -> Reg | Eau
+Reg -> RegR RegE
+Eau -> EauR EauE
+RegR -> 'stylo' | 'livre' | 'cahier' | 'chaise' | 'table' | 'gomme'
+EauR -> 'tableau' | 'bureau'
+RegE -> 's' | Empty
+EauE -> 'x' | Empty
+Empty -> 
+VP -> 'utilise' | 'utilisent' | 'a' | 'ont' | 'regarde' | 'regardent'
+Conj -> 'et' | 'ou'
+```
+
+# Explanation of the grammar 
+
+- S -> NPC VP NPC | NPC VP: A sentence consists of a noun phrase block, a verb, and optionally an object noun phrase block
+- NPC -> NP NPC_A: A noun phrase block starts with a base noun phrase, followed by a continuation to handle conjunctions without left recursion
+- NPC_A -> Conj NP NPC_A | Empty: The continuation can be a conjunction followed by another noun phrase, or it can be empty
+- NP -> Art Noun: A single noun phrase strictly requires an article and a noun
+- Noun -> Reg | Eau: A noun can either follow regular plural rules or irregular -eau rules
+- RegR / EauR: The lexical roots of the school vocabulary
+- RegE / EauE: The plural suffixes. Regular nouns take an 's' or remain empty (singular). Irregular -eau nouns take an 'x' or remain empty
+
+# Implementatiom
+
+
+
+
 
