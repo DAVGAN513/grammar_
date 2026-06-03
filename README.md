@@ -117,7 +117,26 @@ Conj -> 'et' | 'ou'
 
 # Implementatiom
 
+To test this grammar the python program using NLTK can be utilizad tis program will require a preprocessing step that separates plural endings from their roots before passing them to the parser
 
+# Correct Sentence
+- Le stylo a le cahier
+- Les stylos utilisent les tableau x
+- La chaise et le bureau regardent le tableau
+- Les cahier s ou les livres ont le stylo
+- Le bureau a le cahier et les gommes
 
+# Incorrect sentences
+- Le stylo x xa le cahier
+- Les tableau s ont le livre
+- Chaise utilise stylo
+- Le stylo et ou le cahier a
+
+# Analysis
+Asymptotic Analysis
+For this the lexer must iterate through the users input string to separate the suffixes, this preprocessing string manipulation aperates at O(n) time complexity where the n is the number of character or words in the sentences, since the grammar was rigorously refactored to be an ll(1) parser by eliminating all ambiguity and left recursion the nltk parser will only ever find one unique valid parse tree ti doesnt need to backtrack or generate exponetial combinatorial trees, the parsinf itself is highly optimal maintaining an overall linear O(n) complexity for validating and generating the tree
+
+# Type of Grammar
+Now regarding the Chomsky Hierarchy this is a contect free grammar it is not regular grammar because regular grammars only allow a single non terinal on the left hand side and a right hand side consistieng of a single terminal or a single terminal followed by a single non terminal, this grammar contains rules like can be two non terminals on the right wich strictly categorizes it as a context free grammar.
 
 
