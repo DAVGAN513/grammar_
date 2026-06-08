@@ -115,6 +115,20 @@ Conj -> 'et' | 'ou'
 - RegR / EauR: The lexical roots of the school vocabulary
 - RegE / EauE: The plural suffixes. Regular nouns take an 's' or remain empty (singular). Irregular -eau nouns take an 'x' or remain empty
 
+
+# Evidence for the tree
+To prove thar the final grammar successfully eliminated structural ambiguity the strings were evaluated using an automated parser, the initial grammar wich would produce multiple valid parse trees for a single conjuntion list the LL(1) grammar strictly generates one unique syntax tree per valid sentence
+Yhe following trees demostrate how the lexical processor separates the suffixes the s and the x
+
+<img width="557" height="322" alt="image" src="https://github.com/user-attachments/assets/d61ed101-5d94-48ee-af3f-7a5d68e011c0" />
+
+<img width="602" height="352" alt="image" src="https://github.com/user-attachments/assets/ab0669b3-65a2-490c-a046-4ffc9304a03c" />
+
+
+<img width="707" height="311" alt="image" src="https://github.com/user-attachments/assets/af9a61bc-3b92-4761-a978-c1b0d29f018d" />
+
+
+
 # Implementatiom
 
 To test this grammar the python program using NLTK can be utilizad tis program will require a preprocessing step that separates plural endings from their roots before passing them to the parser
